@@ -57,7 +57,39 @@ footer b{font-family:Anton;font-size:64px;font-weight:400;letter-spacing:.1em}
 footer a{display:block;color:var(--fg);text-decoration:none;margin:6px 0;color:var(--mute)}footer a:hover{color:#fff}
 #ld{position:fixed;inset:0;z-index:10;background:#000;display:grid;place-items:center;font-family:Anton;font-size:clamp(60px,14vw,180px);letter-spacing:.1em}
 #ld span{display:inline-block;opacity:0;transform:translateY(40px) rotateX(80deg)}
-@media(max-width:760px){.loc{grid-template-columns:1fr}nav div a:nth-child(n+3){display:none}.gal div:nth-child(n){grid-column:span 12;grid-row:span 1}}
+@media(max-width:1024px){
+  .events{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .gal{grid-template-columns:repeat(6,1fr)}
+  .gal div:nth-child(1){grid-column:span 4;grid-row:span 2}
+  .gal div:nth-child(2){grid-column:span 2}
+  .gal div:nth-child(3){grid-column:span 2}
+  .gal div:nth-child(4){grid-column:span 3;grid-row:span 2}
+  .gal div:nth-child(5){grid-column:span 3}
+}
+@media(max-width:768px){
+  .loc{grid-template-columns:1fr}
+  nav div a:nth-child(n+3){display:none}
+  .gal div:nth-child(n){grid-column:span 12;grid-row:span 1}
+  .gal{grid-template-columns:repeat(4,1fr)}
+  section{padding:100px 20px}
+  .events{gap:20px}
+  .card{aspect-ratio:3/5}
+}
+@media(max-width:480px){
+  nav{padding:15px 20px}
+  nav b{font-size:20px}
+  nav div{gap:15px}
+  nav div a{font-size:12px}
+  h1{font-size:clamp(40px,10vw,120px)}
+  h2{font-size:clamp(32px,6vw,80px)}
+  .events{grid-template-columns:1fr}
+  .gal{grid-template-columns:repeat(2,1fr);gap:10px}
+  .gal div:nth-child(n){grid-column:span 2;grid-row:span 1}
+  section{padding:80px 16px}
+  .card{aspect-ratio:4/5}
+  footer{padding:60px 20px 40px}
+  footer b{font-size:48px}
+}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head><body>
 <div id="ld" aria-label="IBIZA DREAMS"><div><span>I</span><span>B</span><span>I</span><span>Z</span><span>A</span></div></div>
