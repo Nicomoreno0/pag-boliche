@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IBIZA DREAMS — The night is yours</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--fg:#f4f4f4;--red:#ff1f3d;--vio:#8a2bff;--blue:#2b6bff;--mute:#9a9aa6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--fg);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+main,nav,footer{position:relative;z-index:2}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(18px,4vw,56px);z-index:5;mix-blend-mode:difference}
+nav b{font-family:Anton;font-size:26px;letter-spacing:.12em}
+nav div{display:flex;gap:clamp(14px,3vw,36px);font-size:14px}
+nav a{color:#fff;text-decoration:none;position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:100%;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .35s}
+nav a:hover::after{transform:scaleX(1)}
+section{min-height:100vh;padding:120px clamp(18px,6vw,96px);display:flex;flex-direction:column;justify-content:center}
+h1,h2{font-family:Anton;font-weight:400;line-height:.92;text-transform:uppercase}
+h1{font-size:clamp(56px,13vw,210px);letter-spacing:.02em}
+h2{font-size:clamp(44px,8vw,120px)}
+.hero{align-items:center;text-align:center}
+.hero p{margin-top:18px;font-size:clamp(14px,1.6vw,20px);letter-spacing:.5em;color:var(--mute)}
+.btn{margin-top:36px;display:inline-block;padding:16px 38px;border:1px solid var(--fg);color:var(--fg);background:transparent;text-decoration:none;font-weight:700;font-size:14px;letter-spacing:.14em;position:relative;overflow:hidden;cursor:pointer;transition:color .35s,box-shadow .35s}
+.btn::before{content:"";position:absolute;inset:0;background:var(--red);transform:translateY(101%);transition:transform .4s cubic-bezier(.2,.8,.2,1);z-index:-1}
+.btn:hover{box-shadow:0 0 30px rgba(255,31,61,.55)}.btn:hover::before{transform:none}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.scroll{position:absolute;bottom:calc(28px + env(safe-area-inset-bottom,0px));left:50%;width:1px;height:64px;background:linear-gradient(var(--fg),transparent);animation:sc 2s infinite}
+@keyframes sc{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:56px;perspective:1100px}
+.card{position:relative;aspect-ratio:3/4.2;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid rgba(255,255,255,.14);background:var(--art),rgba(8,8,12,.6);backdrop-filter:blur(6px);transform-style:preserve-3d;transition:transform .25s,border-color .3s;will-change:transform}
+.card:hover{border-color:var(--c)}
+.card>*{transform:translateZ(40px)}
+.card small{color:var(--c);font-weight:700;letter-spacing:.12em}
+.card h3{font-family:Anton;font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1;margin:8px 0;text-transform:uppercase}
+.card p{color:var(--mute);font-size:14px}
+.card .btn{margin-top:18px;padding:12px 20px;align-self:flex-start;font-size:12px}
+.exp{align-items:flex-start}
+.exp .line{display:block;overflow:hidden}
+.exp .line span{display:block}
+.exp .sub{max-width:46ch;margin-top:34px;color:var(--mute);line-height:1.7}
+.gal{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(110px,14vw,190px);gap:14px;margin-top:48px}
+.gal div{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);clip-path:inset(0 0 100% 0)}
+.gal div::after{content:attr(data-t);position:absolute;left:14px;bottom:12px;font-size:12px;letter-spacing:.12em;font-weight:700}
+.gal div:nth-child(1){grid-column:span 7;grid-row:span 2}.gal div:nth-child(2){grid-column:span 5}.gal div:nth-child(3){grid-column:span 5}
+.gal div:nth-child(4){grid-column:span 4;grid-row:span 2}.gal div:nth-child(5){grid-column:span 8}
+.gal i{position:absolute;inset:-20%;background:var(--g);animation:dr 9s ease-in-out infinite alternate}
+@keyframes dr{to{transform:translate(6%,4%) scale(1.15) rotate(3deg)}}
+.loc{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.loc dl{display:grid;gap:18px;margin-top:30px}.loc dt{color:var(--mute);font-size:13px}.loc dd{font-size:18px}
+.map{aspect-ratio:1;border:1px solid rgba(255,255,255,.18);position:relative;background:repeating-linear-gradient(0deg,transparent 0 39px,rgba(255,255,255,.07) 39px 40px),repeating-linear-gradient(90deg,transparent 0 39px,rgba(255,255,255,.07) 39px 40px),radial-gradient(circle at 50% 50%,rgba(255,31,61,.25),transparent 55%)}
+.map::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(255,31,61,.8);animation:pl 2s infinite}
+@keyframes pl{to{box-shadow:0 0 0 46px rgba(255,31,61,0)}}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;padding:80px clamp(18px,6vw,96px) 60px;border-top:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.75)}
+footer b{font-family:Anton;font-size:64px;font-weight:400;letter-spacing:.1em}
+footer a{display:block;color:var(--fg);text-decoration:none;margin:6px 0;color:var(--mute)}footer a:hover{color:#fff}
+#ld{position:fixed;inset:0;z-index:10;background:#000;display:grid;place-items:center;font-family:Anton;font-size:clamp(60px,14vw,180px);letter-spacing:.1em}
+#ld span{display:inline-block;opacity:0;transform:translateY(40px) rotateX(80deg)}
+@media(max-width:760px){.loc{grid-template-columns:1fr}nav div a:nth-child(n+3){display:none}.gal div:nth-child(n){grid-column:span 12;grid-row:span 1}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div id="ld" aria-label="IBIZA DREAMS"><div><span>I</span><span>B</span><span>I</span><span>Z</span><span>A</span></div></div>
+<canvas id="gl" aria-hidden="true"></canvas>
+<nav><b>IBIZA DREAMS</b><div><a href="#eventos">Eventos</a><a href="#experiencia">Experiencia</a><a href="#galeria">Galería</a><a href="#ubicacion">Ubicación</a></div></nav>
+<main>
+<section class="hero" id="top"><h1 id="h1">Welcome<br>to Ibiza Dreams</h1><p>THE NIGHT IS YOURS</p><a class="btn" href="#eventos">DESCUBRÍ IBIZA DREAMS</a><div class="scroll"></div></section>
+
+<section id="eventos"><h2>Próximas<br>noches</h2>
+<div class="events">
+<article class="card" style="--c:#ff1f3d;--art:radial-gradient(circle at 30% 20%,#ff1f3d99,transparent 55%),linear-gradient(160deg,#2a0008,#000)"><small>SÁB 22 NOV</small><h3>The Project</h3><p>🎉 HANGOVER | 🎭 THE PROJECT | 🤪 22 NOV LOCO AMATO</p><a class="btn" href="https://alpogo.com/evento/27952" target="_blank" rel="noopener">OBTENER ENTRADAS</a></article>
+<article class="card" style="--c:#8a2bff;--art:radial-gradient(circle at 70% 30%,#8a2bff99,transparent 55%),linear-gradient(200deg,#16002e,#000)"><small>PRÓXIMAMENTE</small><h3>Hangover</h3><p>Fiestas exclusivas en IBIZA DREAMS</p><a class="btn" href="https://alpogo.com/evento/27952" target="_blank" rel="noopener">OBTENER ENTRADAS</a></article>
+<article class="card" style="--c:#2b6bff;--art:radial-gradient(circle at 40% 70%,#2b6bff99,transparent 55%),linear-gradient(120deg,#000b2a,#000)"><small>SESSIONS</small><h3>Artistas</h3><p>ECKO • LAUTY • DOBLE P • PEIPPER • LA T Y LA M</p><a class="btn" href="#eventos">VER ARTISTAS</a></article>
+</div></section>
+
+<section class="exp" id="experiencia"><h2><span class="line"><span>Not just</span></span><span class="line"><span>a club.</span></span><span class="line"><span>It's an</span></span><span class="line"><span>experience.</span></span></h2>
+<p class="sub">Luz láser, humo bajo, sonido de escenario y una cabina en el centro de todo. Entrás a las 00:00 y salís cuando amanece.</p></section>
+
+<section id="galeria"><h2>Noches que<br>se recuerdan</h2>
+<div class="gal">
+<div data-t="THE PROJECT"><i style="--g:conic-gradient(from 0deg,#ff1f3d,#000,#8a2bff,#000,#ff1f3d)"></i></div>
+<div data-t="LA CABINA"><i style="--g:radial-gradient(circle at 30% 40%,#2b6bff,#000 60%)"></i></div>
+<div data-t="HUMO"><i style="--g:linear-gradient(120deg,#000,#8a2bff88,#000)"></i></div>
+<div data-t="BARRA"><i style="--g:radial-gradient(circle at 70% 60%,#ff1f3d,#000 60%)"></i></div>
+<div data-t="AMANECER"><i style="--g:linear-gradient(90deg,#000,#ff1f3d,#8a2bff,#000)"></i></div>
+</div></section>
+
+<section id="ubicacion"><div class="loc"><div><h2>Encontrá<br>Ibiza Dreams</h2>
+<dl><div><dt>Dirección</dt><dd>Rivadavia 212, Cruz Del Eje - Córdoba</dd></div><div><dt>Horario</dt><dd>Jueves a sábado, 00:00 a 06:00</dd></div><div><dt>Entradas</dt><dd>Anticipadas por Alpogo o en puerta hasta las 02:00</dd></div></dl>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Rivadavia+212+Cruz+Del+Eje+Cordoba" target="_blank" rel="noopener">CÓMO LLEGAR</a></div><div class="map" role="img" aria-label="Mapa de ubicación"></div></div></section>
+</main>
+<footer><div><b>IBIZA DREAMS</b></div><div><a href="#">Instagram</a><a href="#">TikTok</a></div><div><a href="mailto:hola@ibizadreams.com">hola@ibizadreams.com</a><a href="#ubicacion">Ubicación</a><a href="#eventos">Entradas</a></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const mob=innerWidth<760,cv=document.getElementById('gl');
+const R=new THREE.WebGLRenderer({canvas:cv,antialias:!mob,alpha:true});
+R.setPixelRatio(Math.min(devicePixelRatio,mob?1.5:2));
+const S=new THREE.Scene();S.fog=new THREE.FogExp2(0x000000,.045);
+const C=new THREE.PerspectiveCamera(55,1,.1,200);C.position.z=9;
+function rs(){R.setSize(innerWidth,innerHeight);C.aspect=innerWidth/innerHeight;C.updateProjectionMatrix()}rs();addEventListener('resize',rs);
+S.add(new THREE.AmbientLight(0x222233,.6));
+const L1=new THREE.PointLight(0xff1f3d,3,40),L2=new THREE.PointLight(0x8a2bff,3,40);L1.position.set(5,4,6);L2.position.set(-6,-3,4);S.add(L1,L2);
+const mat=new THREE.MeshStandardMaterial({color:0xcfcfd8,metalness:1,roughness:.18,emissive:0x110004});
+const knot=new THREE.Mesh(new THREE.TorusKnotGeometry(1.6,.46,mob?120:260,mob?16:36),mat);S.add(knot);
+const wire=new THREE.Mesh(new THREE.IcosahedronGeometry(3.2,1),new THREE.MeshBasicMaterial({color:0xff1f3d,wireframe:true,transparent:true,opacity:.25}));S.add(wire);
+const tun=new THREE.Group();S.add(tun);
+for(let i=0;i<14;i++){const r=new THREE.Mesh(new THREE.TorusGeometry(5,.03,8,80),new THREE.MeshBasicMaterial({color:i%2?0x8a2bff:0xff1f3d}));r.position.z=-6-i*4;tun.add(r)}
+tun.visible=true;tun.scale.setScalar(.001);
+const N=mob?500:1400,pg=new THREE.BufferGeometry(),pa=new Float32Array(N*3);
+for(let i=0;i<N*3;i++)pa[i]=(Math.random()-.5)*(i%3==2?70:24);
+pg.setAttribute('position',new THREE.BufferAttribute(pa,3));
+const pts=new THREE.Points(pg,new THREE.PointsMaterial({size:.05,color:0xffffff,transparent:true,opacity:.7}));S.add(pts);
+const st={kx:0,ks:1,cz:9,wo:.25,tn:.001,sp:1,h:0};
+const tl=gsap.timeline({scrollTrigger:{trigger:'main',start:'top top',end:'bottom bottom',scrub:1.2}});
+tl.to(st,{kx:mob?0:3.4,ks:.8,cz:10,h:.75,duration:1})
+  .to(st,{kx:mob?0:-3.4,ks:1.15,cz:7,wo:.5,sp:3,h:.62,duration:1})
+  .to(st,{kx:0,ks:.5,cz:-8,tn:1,wo:0,sp:5,h:.0,duration:1.4})
+  .to(st,{kx:0,ks:1.6,cz:-12,tn:1,wo:.35,sp:2,h:.7,duration:1})
+  .to(st,{kx:0,ks:.15,cz:-2,tn:.001,wo:.8,sp:.5,h:.0,duration:1});
+const mx={x:0,y:0};addEventListener('pointermove',e=>{mx.x=e.clientX/innerWidth-.5;mx.y=e.clientY/innerHeight-.5});
+const col=new THREE.Color();let t=0;
+R.setAnimationLoop(()=>{t+=.01;
+ knot.position.x+=(st.kx-knot.position.x)*.08;knot.position.z+=((st.cz<0?st.cz-6:0)-knot.position.z)*.06;
+ knot.scale.setScalar(st.ks);knot.rotation.x+=.004*st.sp+(mx.y*.6-knot.rotation.x%6.28*0)*0;knot.rotation.y+=.006*st.sp;
+ knot.position.y=Math.sin(t*2)*.2-mx.y*.8;knot.position.x+=mx.x*.02;
+ wire.position.copy(knot.position);wire.rotation.y-=.003*st.sp;wire.rotation.z+=.002;wire.material.opacity+=(st.wo-wire.material.opacity)*.05;
+ const k=tun.scale.x+(st.tn-tun.scale.x)*.06;tun.scale.setScalar(Math.max(k,.001));tun.children.forEach((r,i)=>{r.rotation.z+=.002*(i%2?1:-1)});
+ col.setHSL(.97-st.h*.2,.9,.5);L1.color.lerp(col,.05);wire.material.color.lerp(col,.05);
+ C.position.z+=(st.cz-C.position.z)*.06;C.position.x+=(mx.x*2-C.position.x)*.04;C.position.y+=(-mx.y*1.2-C.position.y)*.04;C.lookAt(0,0,C.position.z-9);
+ pts.rotation.y=t*.03;R.render(S,C)});
+// loader
+const sp=document.querySelectorAll('#ld span');
+gsap.timeline().to(sp,{opacity:1,y:0,rotateX:0,stagger:.12,duration:.8,ease:'power3.out'}).to('#ld',{opacity:0,duration:.8,delay:.4,onComplete:()=>document.getElementById('ld').remove()})
+ .from('#h1',{opacity:0,scale:.85,y:40,duration:1.4,ease:'power4.out'},'-=.6').from('.hero p,.hero .btn',{opacity:0,y:20,stagger:.15,duration:.9},'-=.8');
+gsap.from('.card',{scrollTrigger:{trigger:'.events',start:'top 80%'},y:80,rotateX:-25,opacity:0,stagger:.15,duration:1,ease:'power3.out'});
+gsap.from('.exp .line span',{scrollTrigger:{trigger:'.exp',start:'top 60%'},yPercent:110,stagger:.18,duration:1,ease:'power4.out'});
+gsap.to('.gal div',{scrollTrigger:{trigger:'.gal',start:'top 80%'},clipPath:'inset(0 0 0% 0)',stagger:.15,duration:1.1,ease:'power3.inOut'});
+if(!mob)document.querySelectorAll('.card').forEach(c=>{c.addEventListener('pointermove',e=>{const b=c.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;c.style.transform=`rotateY(${x*18}deg) rotateX(${-y*18}deg) translateZ(20px)`});c.addEventListener('pointerleave',()=>c.style.transform='')});
+</script></body></html>
